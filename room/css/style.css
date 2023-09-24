@@ -1,0 +1,287 @@
+:root {
+  --form-control-color: navy;
+  --form-control-disabled: #959495;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+* {
+  font-family: 'Inter', sans-serif !important;
+}
+
+body {
+  margin: 0;
+}
+
+h3{
+  font-weight: 900;
+  color: red;
+  text-transform: uppercase;
+  font-family: 'Inter', sans-serif !important;
+}
+
+form {
+  display: grid;
+  place-content: center;
+  /*min-height: 100vh;*/
+}
+
+
+.form-control {
+  font-size: 1.5rem;
+  /*font-weight: bold;*/
+  line-height: 1.1;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+  border: none;
+  background-color: transparent;
+}
+
+.form-control+.form-control {
+  margin-top: 1em;
+}
+
+.form-control--disabled {
+  color: var(--form-control-disabled);
+  cursor: not-allowed;
+}
+
+input[type="checkbox"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--form-background);
+  /* Not removed via appearance */
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="checkbox"]:focus {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+}
+
+input[type="checkbox"]:disabled {
+  --form-control-color: var(--form-control-disabled);
+  color: #E5E3E4;
+  cursor: not-allowed;
+}
+
+input[type="checkbox"]:disabled::after {
+  content: "✖";
+  color: rgb(216, 102, 102);
+  display: inline-block;
+  width: 20px;
+  /* Adjust the size as needed */
+  height: 20px;
+  /* Adjust the size as needed */
+  text-align: center;
+  vertical-align: middle;
+  /* background-color: red; Background color for the "X" mark */
+  border: none;
+  /* Border for the container */
+  border-radius: 50px;
+  /* Rounded corners for the container */
+  margin-top: -9px;
+  padding-top: 2px;
+}
+
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {
+  margin: 0 -5px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.select {
+  border: #000 !important;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  height: 70vh;
+  text-align: center;
+  background-color: white;
+}
+
+
+.form-control:focus-within {
+  color: var(--form-control-color);
+}
+
+input[type="radio"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--form-background);
+  /* Not removed via appearance */
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
+}
+
+
+input[type="radio"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="radio"]:focus {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+}
+
+
+input[type="date"] {
+  background-color: #0080ff;
+  padding: 15px;
+
+
+
+  font-family: "Roboto Mono", monospace;
+  color: #ffffff;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
+::-webkit-calendar-picker-indicator {
+  background-color: #ffffff;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+element.style {
+  border-width: 10px;
+  border-style: solid;
+  margin: 10px;
+}
+
+#changeImageBackground {
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border-radius: 0.25rem;
+  margin: 1rem;
+  margin-right: 2rem;
+  width: 100% !important;
+  background: #ffff !important;
+  margin-top: 2rem !important;
+  justify-content: left;
+  backdrop-filter: blurd(10px) !important;
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, .3) !important;
+}
+
+
+/* Style the checkbox label (pseudo-element) */
+.time-checkbox:disabled+label::before {
+  content: "X" !important;
+  color: red !important;
+  font-weight: bold !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  text-align: center !important;
+  line-height: 20px !important;
+  /* Adjust this value as needed to center the 'X' vertically */
+  background-color: rgba(255, 0, 0, 0.5) !important;
+  /* Red background with some opacity */
+}
+
+.inline-input {
+  display: inline !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    height: 65vh;
+  }
+  .loginButton{
+    width: 100%;
+  }
+}

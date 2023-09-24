@@ -1,0 +1,143 @@
+CREATE TABLE `events` (
+  `evt_id` bigint(20) NOT NULL,
+  `evt_start` datetime NOT NULL,
+  `evt_end` datetime NOT NULL,
+  `evt_text` text NOT NULL,
+  `evt_color` varchar(7) NOT NULL,
+  `evt_bg` varchar(7) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`evt_id`),
+  ADD KEY `evt_start` (`evt_start`),
+  ADD KEY `evt_end` (`evt_end`);
+
+ALTER TABLE `events`
+  MODIFY `evt_id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+
+
+
+## FULL TUTORIAL
+## PHP MYSQL CALENDAR
+https://code-boxx.com/simple-php-calendar-events/
+
+## IMAGES
+![icon-512](https://user-images.githubusercontent.com/11156244/238808759-264c2998-868e-4ebb-b8a0-d8f8e53978a2.png)
+![favicon](https://user-images.githubusercontent.com/11156244/238808742-f440bcd6-fa54-41cf-9307-51c4e97fd328.png)
+
+## NOTES
+1) Create a database and import `1-database.sql`.
+2) Change the database settings in `2-cal-lib.php` to your own.
+3) If you want "Monday first", change to `mon : true` in `4b-calendar.js`.
+4) That's all – Launch `4a-cal-page.php` in your browser.
+
+## LICENSE
+Copyright by Code Boxx
+
+
+
+
+
+<?php 
+        // Projector
+        if($row['projector'] === "1"){
+          echo "Projector\n";
+        }
+        else{
+          echo "";
+        }
+
+        // Whiteboard
+        if($row['whiteboard'] === "1"){
+          echo "Whiteboard\n";
+        }
+        else{
+          echo "";
+        }
+
+        // Extension Cord
+        if($row['ext_cord'] === "1"){
+          echo "Extension Cord\n";
+        }
+        else{
+          echo "";
+        }
+
+        // Sound
+        if($row['sound']){
+          echo "Sound (";
+        }else{
+          echo "";
+        }
+        
+        if($row['sound_simple'] === "1"){
+          echo "Simple)\n";
+        }
+        else{
+          echo "Advance)\n";
+        }
+        
+        // Basic Lights
+        if($row['basic_lights'] === "1"){
+          echo "Basic Lights\n";
+        }
+        else{
+          echo "";
+        }
+
+        if($row["cleanup"] === "cleanup"){
+          echo "Cleanup (";
+        }
+        else{
+          echo "";
+        }
+
+        if($row['cleanup_before'] === "1"){
+          echo "before)\n";
+        }
+        else{
+          echo "After)\n";
+        }
+
+        if($row['others'] === "others"){
+          echo "";
+        }
+        else{
+          echo $row['others'];
+        }
+          
+          ?>
+
+
+          <?php
+
+                echo "<script> document.getElementById('evtStart').value;</script>";
+                // echo $evtStart1;
+
+                //$resultr = mysql_query("select * from locationpo WHERE  evt_start='$evtStart1'");
+                //if (mysql_num_rows($resultr) == 0) {
+                //  $boardroom="green";
+
+                //  $training1="green";
+                //  $training2="green";
+
+                //}
+                //else
+                //{
+                //  while($rowx=mysql_fetch_row($resultr))
+
+                //  {
+                // echo $rowx[1];
+
+                // }
+
+                //}
+
+          ?>
+
+          <!--  <img src="./images/troom1.jpg" id = "imgko1" alt="logo"  class="" style="width:100px;height:auto;padding:10px 10px 10px 10px;background-color:red" onclick="document.getElementById("roomko").value="Training Room 1";document.getElementById("qty").focus();$("#myModalroom").modal("hide");">
+                 <p>Training Room 1</p>
+
+                 <img src="./images/troom2.jpg" id = "imgko1" alt="logo"  class="" style="width:100px;height:auto;padding:10px 10px 10px 10px;background-color:green" onclick="document.getElementById("roomko").value="Training Room 2";document.getElementById("qty").focus();$("#myModalroom").modal("hide");">
+                 <p>Training Room 2</p>

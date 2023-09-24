@@ -1,0 +1,208 @@
+
+  // Check Availability
+  function checkAvailability(selectedDate) {
+    if (!selectedDate) {
+      console.error('Selected date is empty');
+      return;
+    }
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+      console.log("ReadyState:", this.readyState); // Log the readyState
+        console.log("Status:", this.status); // Log the status
+      if (this.readyState === 4) {
+        if (this.status === 200) {
+          const response = this.responseText;
+          console.log("Response:", response);
+
+          try {
+            const occupiedTimeSlots = JSON.parse(response);
+
+            // Assuming the response is an array of occupied time slots
+            const checkboxes = document.querySelectorAll(".time-checkbox input");
+
+            // Loop through checkboxes and disable those that are occupied
+            checkboxes.forEach((checkbox) => {
+              if (occupiedTimeSlots.includes(checkbox.id)) {
+                checkbox.disabled = true;
+              } else {
+                checkbox.disabled = false;
+              }
+            });
+          } catch (error) {
+            console.error('Error parsing JSON response:', error);
+          }
+        } else {
+          // Handle the request error here
+          console.error('Request failed with status:', this.status);
+        }
+      }
+    };
+    xmlhttp.open("GET", "check_availability.php?q=" + selectedDate, true);
+    xmlhttp.send();
+  }
+
+  // Call the checkAvailability function when the page loads
+  window.addEventListener("load", function () {
+    const selectedDateInput = document.getElementById("evtStart");
+    selectedDateInput.addEventListener("change", function () {
+      const selectedDate = selectedDateInput.value;
+      checkAvailability(selectedDate);
+    });
+  });
+
+  // Call checkAvailability initially with the default date value
+  checkAvailability(selectedDateInput.value);
+
+
+
+  // 2023-09-08
+
+
+  function checkAvailability1() {
+    // Get the selected date from the input field
+    const selectedDate = document.getElementById("evtStart").value;
+
+    // Debugging: Log the selectedDate to the console
+    console.log("Selected Date:", selectedDate);
+
+    // Send an AJAX request to the server to check availability
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "check_availability.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    // Define the data to be sent in the request
+    const data = `selectedDate=${selectedDate}`;
+
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          // Request was successful, handle the response here
+          const response = xhr.responseText;
+          console.log("Response:", response);
+          try {
+            const occupiedTimeSlots = JSON.parse(response);
+
+            // Assuming the response is an array of occupied time slots
+            const checkboxes = document.querySelectorAll(".time-checkbox input");
+
+            // Loop through checkboxes and disable those that are occupied
+            checkboxes.forEach((checkbox) => {
+              if (occupiedTimeSlots.includes(checkbox.id)) {
+               checkbox.disabled = true;
+              } else {
+               checkbox.disabled = false;
+             }
+            });
+          } catch (error) {
+
+            
+            //console.log(evtStart);
+            console.error('Error parsing JSON response:', error);
+          }
+        } else {
+          // Handle the request error here
+          console.error('Request failed with status:', xhr.status);
+        }
+      }
+    };
+
+    // Send the request
+    xhr.send(data);
+  }
+
+  // // $q = $_GET['q'];
+// // echo $q;
+
+// if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+//     // Get the selected date from the AJAX request
+//     $selectedDate = $_GET['q'];
+//     // var_dump($_POST['selectedDate']);
+//     // Initialize an array to store occupied time slots
+//     $occupiedTimeSlots = array();
+
+//     // Example SQL query to check which time slots are occupied for the selected date
+//     $sql = "SELECT x67, x78, x89, x910, x1011, x1112, x121, x12, x23, x34, x45, x56 FROM events WHERE evt_start = '$selectedDate'";
+//     $result = $connect->query($sql);
+//     // echo $sql;
+//     echo $selectedDate;
+
+//     error_log("SQL Query: " . $sql);
+
+//     if ($result->num_rows > 0) {
+//         // Debugging - Log rows retrieved from the database
+//         while ($row = $result->fetch_assoc()) {
+//             error_log("Row: " . print_r($row, true));
+
+//             // Check each column (time slot) for occupancy and update the $occupiedTimeSlots array
+//             foreach ($row as $key => $value) {
+//                 if ($value == 1) {
+//                     $occupiedTimeSlots[] = $key;
+//                 }
+//             }
+//         }
+//     }
+
+//     // Set the response content type to JSON
+//     header('Content-Type: application/json');
+
+//     // Output the JSON response
+//     echo json_encode($occupiedTimeSlots);
+// }
+
+
+
+
+
+// Loop through checkboxes and disable those that are occupied
+            checkboxes.forEach((checkbox) => {
+              if (occupiedTimeSlots.includes(checkbox.id)) {
+               checkbox.disabled = true;
+              } else {
+               checkbox.disabled = false;
+             }
+            });
+
+
+
+ // Loop through checkboxes and disable those that are occupied
+            checkboxes.forEach((checkbox) => {
+              if (occupiedTimeSlots.includes(checkbox.id)) {
+               checkbox.disabled = true;
+              } else {
+               checkbox.disabled = false;
+             }
+            });
+
+
+
+
+
+$query = "SELECT x67, x78, x89, x910, x1011, x1112, x121, x12, x23, x34, x45, x56 
+        FROM events 
+        WHERE evt_start = '$selectedDate'";
+$results = $connect->query($query);
+
+    if($results->num_rows > 0){
+        while($rows = $results->fetch_assoc()){
+            foreach($rows as $key => $values){
+                if($value === 1){
+                    $occupiedTimeSlots[] = $key;
+                }
+            }
+        }
+    }
+
+
+
+
+response.unavailableTimes.forEach((timeSlot) => {
+                const checkbox = document.getElementById(timeSlot);
+
+                // Check if the checkbox element exists before disabling it
+                if (checkbox !== null) {
+                  checkbox.disabled = true;
+                  console.log(checkbox)
+                } else {
+                  console.log('Null');
+                }

@@ -1,0 +1,87 @@
+check_availability.php
+<?php
+include 'connect.php';
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+// Get room and date from the AJAX request
+$roomName = $_POST['roomName'];
+$selectedDate = $_POST['selectedDate'];
+
+// Query the database to check room availability
+$sql = "SELECT COUNT(*) AS appointmentCount
+            FROM events 
+            WHERE evt_start = '$selectedDate' AND evt_text = '$roomName'";
+$result = $connect->query($sql);
+
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    if ($row["appointmentCount"] > 0) {
+        // If there are appointments for the selected room and date
+        $response = ["available" => false]; // Room is not available (mark as yellow)
+    } else {
+        // If no appointments for the selected room and date
+        $response = ["available" => true]; // Room is available (mark as green)
+    }
+    echo json_encode($response);
+
+} else {
+    echo json_encode(["error" => "Database error"]);
+}
+
+
+// Close the database connection
+$connect->close();
+}
+?>
+
+
+
+javascript code
+  function checkRoomAvailability(str) {
+
+    // Get the selected date from the input field
+    var selectedDate = str;
+    var roomName = document.getElementById("roomko").value;
+    var image = document.getElementById("changeImageBackground");
+
+    // Debugging: Log the selectedDate to the console
+    console.log("Selected Date:", str);
+    console.log("Selected Room:", roomName);
+    // console.log("Selected QTY:", quantity);
+
+    // Send an AJAX request to the server to check availability
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "check_availability.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    // Define the data to be sent in the request
+    const data = `roomName=${roomName}&selectedDate=${selectedDate}`;
+
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) { // Check readyState only once
+        if (xhr.status === 200) {
+          const response = JSON.parse(xhr.responseText);
+
+          try {
+            if (response.available) {
+              image.style.backgroundColor = "green";
+            } else {
+              image.style.backgroundColor = "yellow";
+            }
+          } catch (error) {
+            console.error('Error parsing JSON response:', error);
+          }
+
+        } else {
+          // Handle the request error here
+          console.error('Request failed with status:', xhr.status);
+        }
+      }
+    };
+
+
+    // Send the request
+    xhr.send(data);
+    $('#myModalroom').modal('show');
+  }
