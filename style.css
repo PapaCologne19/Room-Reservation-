@@ -1,5 +1,5 @@
 *{
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .container {
@@ -124,4 +124,28 @@ font-size: 95%;
   transition: .4s ease-in-out;
 }
 
+#title{
+  font-weight: 900; 
+  font-family: 'poppins', sans-serif !important; 
+  font-size: 50px; 
+  color: darkblue;
+  animation: colorChange 10s linear infinite !important;
+}
 
+@keyframes colorChange {
+  0%, 100% {
+    color: darkblue;
+  }
+  
+  25% {
+    color: purple; /* Color 1 */
+  }
+
+  50% {
+    color: darkslateblue; /* Color 2 */
+  }
+
+  75% {
+    color: darkred; /* Color 3 */
+  }
+}

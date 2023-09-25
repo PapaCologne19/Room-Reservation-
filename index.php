@@ -135,7 +135,7 @@ if (isset($_POST['register'])) {
                     <div class="panel panel-login">
                         <div class="panel-heading pt-3">
                             <img src="room/images/pcn.png" alt="PCN LOGO" class="img-responsive" width="15%">
-                            <div class="panel-title text-center" style="font-weight: 900; font-family: 'poppins', sans-serif !important; font-size: 50px; color: darkblue;">Room Reservation</div>
+                            <div class="panel-title text-center" id="title">Room Reservation</div>
                             <hr>
                         </div>
                         <div class="panel-body">

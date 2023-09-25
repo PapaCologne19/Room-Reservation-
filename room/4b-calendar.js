@@ -394,51 +394,51 @@ var cal = {
       // Time
       const timeSlots = [{
           key: "x67",
-          label: "6AM to 7AM"
+          label: "6am to 7am"
         },
         {
           key: "x78",
-          label: "7AM to 8AM"
+          label: "7am to 8am"
         },
         {
           key: "x89",
-          label: "8AM to 9AM"
+          label: "8am to 9am"
         },
         {
           key: "x910",
-          label: "9AM to 10AM"
+          label: "9am to 10am"
         },
         {
           key: "x1011",
-          label: "10AM to 11AM"
+          label: "10am to 11am"
         },
         {
           key: "x1112",
-          label: "11AM to 12PM"
+          label: "11am to 12pm"
         },
         {
           key: "x121",
-          label: "12PM to 1PM"
+          label: "12pm to 1pm"
         },
         {
           key: "x12",
-          label: "1PM to 2PM"
+          label: "1pm to 2pm"
         },
         {
           key: "x23",
-          label: "2PM to 3PM"
+          label: "2pm to 3pm"
         },
         {
           key: "x34",
-          label: "3PM to 4PM"
+          label: "3pm to 4pm"
         },
         {
           key: "x45",
-          label: "4PM to 5PM"
+          label: "4pm to 5pm"
         },
         {
           key: "x56",
-          label: "5PM to 6PM"
+          label: "5pm to 6pm"
         }
       ];
 
@@ -464,7 +464,7 @@ var cal = {
       });
 
       if (timeSlotsText.length > 0 && !allSlotsAvailable) {
-        cal.hfEnd1.value = timeSlotsText.join(", ");
+        cal.hfEnd1.value = timeSlotsText.join(",  ");
       } else {
         cal.hfEnd1.style.display = "none";
        

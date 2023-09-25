@@ -242,22 +242,22 @@ if (isset($_POST['SubButton'])) {
   $new_date = Date('H:i a', $string_to_date);
 
 
-  
-    // No existing data, proceed with the insertion
-    $query = "INSERT INTO events (user_id, evt_start, evt_end, evt_text, evt_color, evt_bg, qty, projector, whiteboard, ext_cord, sound, sound_simple, sound_advance, basic_lights,
+
+  // No existing data, proceed with the insertion
+  $query = "INSERT INTO events (user_id, evt_start, evt_end, evt_text, evt_color, evt_bg, qty, projector, whiteboard, ext_cord, sound, sound_simple, sound_advance, basic_lights,
     cleanup, cleanup_before, cleanup_after, others, others1, x67, x78, x89, x910, x1011, x1112, x121, x12, x23, x34, x45, x56, room_orientation, fullName, user_category) 
     VALUES ('$userID','$evtStart', '$evtEnd', '$roomko', '#000000', '#ffff00', '$qty', '$cprojector', '$cwhiteboard', '$cextn', 'sound', '$radios', '$radioa', '$basicl',
     'cleanup', '$c_before', '$c_after', '$other_equipment', '$others_rem', '$x67v', '$x78v', '$x89v', '$x910v', '$x1011v', '$x1112v', '$x121v', '$x12v', '$x23v', '$x34v', '$x45v', '$x56v', '$room_orientation', '$fullname', '$userCategory')";
 
-    $result = mysqli_query($connect, $query);
+  $result = mysqli_query($connect, $query);
 
-    if (!$result) {
+  if (!$result) {
     // Handle the case where the insertion query failed
     echo "Insertion failed.";
-    }else{
-      header("location: index.php");
-    }
+  } else {
+    header("location: index.php");
   }
+}
 
 if (isset($_SESSION["username"], $_SESSION["password"])) {
 ?>
@@ -399,8 +399,8 @@ if (isset($_SESSION["username"], $_SESSION["password"])) {
       <form method="dialog">
         <div id="evtCX">&times;</div>
         <h2 class="evt100">CALENDAR EVENT</h2>
-          <input type="hidden" name="evtCategory" id="evtCategory">
-          <input type="hidden" name="evtUserID" id="evtUserID">
+        <input type="hidden" name="evtCategory" id="evtCategory">
+        <input type="hidden" name="evtUserID" id="evtUserID">
         <div class="evt50">
           <label for=""> Requestor</label>
           <input type="text" name="evtRequestor" id="evtRequestor" disabled>
@@ -580,10 +580,10 @@ if (isset($_SESSION["username"], $_SESSION["password"])) {
                   $row = $result->fetch_assoc();
                   ?>
                   <form action="" method="POST">
-                    <input type="hidden" name="userID" id="userID" value="<?php echo $row['id']?>">
-                    <input type="hidden" name="userCategory" id="userCategory" value="<?php echo $row['category']?>">
-                    <input type="hidden" name="firstname" id="firstname" value="<?php echo $row['firstname']?>">
-                    <input type="hidden" name="lastname" id="lastname" value="<?php echo $row['lastname']?>">
+                    <input type="hidden" name="userID" id="userID" value="<?php echo $row['id'] ?>">
+                    <input type="hidden" name="userCategory" id="userCategory" value="<?php echo $row['category'] ?>">
+                    <input type="hidden" name="firstname" id="firstname" value="<?php echo $row['firstname'] ?>">
+                    <input type="hidden" name="lastname" id="lastname" value="<?php echo $row['lastname'] ?>">
                     <div class="evt50">
                       <br>
                       <label for="" class="form-label">Select Date</label>
@@ -757,22 +757,22 @@ if (isset($_SESSION["username"], $_SESSION["password"])) {
 
                 <center>
                   <label class="form-control" style="text-align:left">
-                    <input type="radio" name="roomOrientation" value="Classroom" onclick="fdisplay1x()" checked /><a href="#" onclick="$('#myModalroomClassroom').modal('show');" aria-label="Close" style="display: inline; text-align: left; font-size: 1.3rem; text-decoration: none; color: #555555;">Class Room (Tables and chairs) <img src="images/classroom.png" alt="picture" style="float: right;" width="20%"> </a>
+                    <input type="radio" name="roomOrientation" value="Classroom" onclick="fdisplay1x()" checked /><a href="#" onclick="$('#myModalroomClassroom').modal('show');" aria-label="Close" style="display: inline; text-align: left; font-size: 1.3rem; text-decoration: none; color: #555555;">Class Room (Tables and chairs) <img src="images/classroom.png" alt="picture" style="float: right; box-shadow: 5px 5px 5px rgba(0,0,0,.3) !important;" width="20%"> </a>
                   </label>
 
                   <label class="form-control" style="text-align:left">
                     <input type="radio" name="roomOrientation" value="Workshop" onclick="fdisplay1x()" />
-                    <a href="#" onclick="$('#myModalroomworkshop').modal('show');" aria-label="Close" style="display: inline; text-align: left; font-size: 1.5rem; text-decoration: none; color: #555555;">Workshop <img src="images/workshop.png" alt="picture" style="float: right;" width="20%"> </a>
+                    <a href="#" onclick="$('#myModalroomworkshop').modal('show');" aria-label="Close" style="display: inline; text-align: left; font-size: 1.5rem; text-decoration: none; color: #555555;">Workshop <img src="images/workshop.png" alt="picture" style="float: right; box-shadow: 5px 5px 5px rgba(0,0,0,.3) !important;" width="20%"> </a>
                   </label>
 
                   <label class="form-control" style="text-align:left">
                     <input type="radio" name="roomOrientation" value="Training" onclick="fdisplay1x()" />
-                    <a href="#" onclick="$('#myModalroomTraining').modal('show');" aria-label="Close" style="display: inline; text-align: left; font-size: 1.5rem; text-decoration: none; color: #555555;">Training (All Chairs) <img src="images/trainingroom.png" alt="picture" style="float: right;" width="20%"> </a>
+                    <a href="#" onclick="$('#myModalroomTraining').modal('show');" aria-label="Close" style="display: inline; text-align: left; font-size: 1.5rem; text-decoration: none; color: #555555;">Training (All Chairs) <img src="images/trainingroom.png" alt="picture" style="float: right; box-shadow: 5px 5px 5px rgba(0,0,0,.3) !important;" width="20%"> </a>
                   </label>
 
                   <label class="form-control" style="text-align:left">
                     <input type="radio" name="roomOrientation" value="Open" onclick="fdisplay1x()" />
-                    <a href="#" onclick="$('#myModalroomOpen').modal('show');" aria-label="Close" style="display: inline; text-align: left; font-size: 1.5rem; text-decoration: none; color: #555555;">Open <img src="images/openroom.png" alt="picture" style="float: right;" width="20%"> </a>
+                    <a href="#" onclick="$('#myModalroomOpen').modal('show');" aria-label="Close" style="display: inline; text-align: left; font-size: 1.5rem; text-decoration: none; color: #555555;">Open <img src="images/openroom.png" alt="picture" style="float: right; box-shadow: 5px 5px 5px rgba(0,0,0,.3) !important;" width="20%"> </a>
 
                   </label>
 
@@ -976,11 +976,11 @@ if (isset($_SESSION["username"], $_SESSION["password"])) {
 
   <script>
     function focusQtyInput() {
-    // Set focus on the "Qty" input field
-    setTimeout(function() {
-      document.getElementById('qty').focus();
-    }, 100); 
-  }
+      // Set focus on the "Qty" input field
+      setTimeout(function() {
+        document.getElementById('qty').focus();
+      }, 100);
+    }
 
     function fwriteme() {
 
@@ -1310,6 +1310,20 @@ if (isset($_SESSION["username"], $_SESSION["password"])) {
 
     // Add an event listener to trigger the room availability check when the date selection changes
     document.getElementById('evtStarts').addEventListener('change', checkRoom);
+
+
+    // Date Checking
+    // Get a reference to the date input element
+    const datePicker = document.getElementById("evtStarts");
+
+    // Set the minimum date to today
+    const today = new Date().toISOString().split("T")[0];
+    datePicker.min = today;
+
+    // Add an event listener to handle date selection
+    datePicker.addEventListener("change", function() {
+      const selectedDate = this.value;
+    });
   </script>
 
   </html>
