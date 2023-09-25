@@ -271,6 +271,7 @@ if (isset($_SESSION["username"], $_SESSION["password"])) {
     <title>Calendar</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <meta http-equiv="refresh" content="1800; url=logout.php">
 
     <!-- ANDROID + CHROME + APPLE + WINDOWS APP -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -543,7 +544,7 @@ if (isset($_SESSION["username"], $_SESSION["password"])) {
 
               <br><br>
               <div class="mb-3" style="float: right;">
-                <button type="submit" class="btn btn-success" name="addRoom" id="addRoom">Add</button>
+                <button type="submit" class="btn btn-primary" name="addRoom" id="addRoom">Add</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
               </div>
 

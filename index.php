@@ -25,11 +25,12 @@ if (isset($_POST['login-submit'])) {
             if ($row["status"] === "1" && $row["category"] === "USER") {
                 header("Location: room/index.php");
             } elseif($row["status"] === "1" && $row["category"] === "SUPER ADMIN"){
-                $_SESSION["success"] = "Successfully Login.
+                $_SESSION['success'] = "Successfully Login.
                 Welcome, Admin " . $_SESSION['firstname'];
                 header("Location: admin/admin.php");
             }
             elseif ($row['status'] === "1" && $row["category"] === "ADMIN") {
+                $_SESSION['success'] = "Welcome, Admin " . $_SESSION['firstname'] . "";
                 header("Location: room/index.php");
             } elseif ($row["status"] === "2" && $row["category"] === "USER") {
                 $_SESSION["error"] =  "Your account has been rejected. Contact Mr. Deo or Mr. Mike for more info. Thank you.";
@@ -41,7 +42,6 @@ if (isset($_POST['login-submit'])) {
         }
     } else {
         $_SESSION["error"] = "Hacker ka 'no? Huwag kami!🤬";
-        echo "<script>$('#myModalroom').modal('show');</script>";
     }
 }
 
@@ -135,29 +135,30 @@ if (isset($_POST['register'])) {
                     <div class="panel panel-login">
                         <div class="panel-heading pt-3">
                             <img src="room/images/pcn.png" alt="PCN LOGO" class="img-responsive" width="15%">
-                            <div class="panel-title text-center" style="font-weight: 900; font-family: 'Roboto', sans-serif; font-size: 50px;">LOGIN</div>
+                            <div class="panel-title text-center" style="font-weight: 900; font-family: 'poppins', sans-serif !important; font-size: 50px; color: darkblue;">Room Reservation</div>
                             <hr>
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12 forms">
-                                    <form id="login-form" class="col-lg-offset-1 col-lg-10" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" role="form" style="display: block;">
-                                        <div class="form-group input-group">
+                                    <form id="login-form" class="col-lg-offset-1 col-lg-10 forms" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" role="form" style="display: block;">
+                                        <div class="form-floating mt-4">
                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                            <input type="text" name="username" id="username" tabindex="1" class="form-control" required>
-                                            <label class="form-control-placeholder" for="username">Username</label>
+                                            <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" required>
+                                            <label class="username" for="username">USERNAME</label>
                                         </div>
-                                        <div class="form-group input-group">
+                                        <div class="form-floating mt-4">
                                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                            <input type="password" name="password" id="password" tabindex="2" class="form-control" required>
-                                            <label class="form-control-placeholder" for="password">Password</label>
+                                            <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required>
+                                            <label class="password" for="password">PASSWORD</label>
                                         </div>
                                         <div class="col-sm-6 col-sm-offset-3">
                                             <button type="submit" name="login-submit" id="login-submit" tabindex="3" class="form-control btn btn-login" value="LOGIN"><i class="fas fa-sign-in-alt"></i> Login</button>
                                         </div>
-                                        <div class="col-md-6 pt-3">
-                                            <a href="javascript:void(0)" class="registerAccount" style="color: #BABABA; ">Register Account here</a>
+                                        <div class="col-md-6 pt-4 pb-4">
+                                            <a href="javascript:void(0)" class="registerAccount link" style="color: #BABABA; ">Register Account here</a>
                                         </div>
+                                       
                                 </div>
                                 </form>
                             </div>
@@ -177,7 +178,7 @@ if (isset($_POST['register'])) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" class="row g-3 needs-validation" enctype="multipart/form-data" accept="image/png, image/jpeg, image/jpg">
+                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" class="row g-3 needs-validation">
                         <div class="mb-3">
                             <label for="" class="form-label">ID Number</label>
                             <input type="number" class="form-control" name="idnumber" id="idnumber" required>
@@ -226,8 +227,8 @@ if (isset($_POST['register'])) {
                         </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn button" name="register" id="register">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary button" name="register" id="register">Save changes</button>
                 </div>
                 </form>
             </div>

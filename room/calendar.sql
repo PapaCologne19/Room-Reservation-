@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 23, 2023 at 07:47 AM
+-- Generation Time: Sep 25, 2023 at 01:36 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -72,13 +72,10 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`evt_id`, `evt_start`, `evt_end`, `evt_text`, `evt_color`, `evt_bg`, `qty`, `projector`, `whiteboard`, `ext_cord`, `sound`, `sound_simple`, `sound_advance`, `basic_lights`, `cleanup`, `cleanup_before`, `cleanup_after`, `others`, `others1`, `allday`, `x67`, `x78`, `x89`, `x910`, `x1011`, `x1112`, `x121`, `x12`, `x23`, `x34`, `x45`, `x56`, `room_orientation`, `user_id`, `fullName`, `user_category`) VALUES
-(1, '2023-09-19', '2023-09-19 00:00:00', 'BOARD', '#000000', '#ff0000', '12', '1', '1', '1', 'sound', '0', '1', '0', 'cleanup', '0', '0', 'others', '', '', '1', '1', '1', '1', '1', '', '', '', '', '', '', '', 'Open', 1, 'JAMES PHILIP GOMERA', 'USER'),
-(2, '2023-09-20', '2023-09-20 00:00:00', 'BOARD', '#000000', '#009900', '6', '1', '1', '1', 'sound', '0', '0', '0', 'cleanup', '0', '0', 'others', '', '', '1', '1', '1', '1', '1', '1', '', '', '', '', '', '', 'Training', 1, 'JAMES PHILIP GOMERA', 'USER'),
-(3, '2023-09-19', '2023-09-19 00:00:00', 'BOARD', '#000000', '#ffff00', '6', '1', '0', '1', 'sound', '1', '0', '0', 'cleanup', '0', '0', 'others', '', '', '', '', '', '', '', '1', '1', '1', '1', '1', '1', '', 'Workshop', 3, 'John Doe', 'USER'),
+(3, '2023-09-19', '2023-09-19 00:00:00', 'BOARD', '#000000', '#009900', '6', '1', '0', '1', 'sound', '1', '0', '0', 'cleanup', '0', '0', 'others', '', '', '', '', '', '', '', '1', '1', '1', '1', '1', '1', '', 'Workshop', 3, 'John Doe', 'USER'),
 (4, '2023-09-20', '2023-09-20 00:00:00', 'BOARD', '#000000', '#ff0000', '6', '0', '1', '1', 'sound', '0', '0', '0', 'cleanup', '0', '0', 'others', '', '', '', '', '', '', '', '', '1', '1', '1', '1', '1', '', 'Classroom', 3, 'John Doe', 'USER'),
-(11, '2023-09-21', '2023-09-21 00:00:00', 'BOARD', '#000000', '#ffff00', '5', '1', '1', '1', 'sound', '0', '1', '0', 'cleanup', '1', '0', 'others', '', '', '1', '1', '1', '1', '1', '1', '', '', '', '', '', '', 'Open', 3, 'John Doe', 'USER'),
-(12, '2023-09-21', '2023-09-21 00:00:00', 'BOARD', '#000000', '#ffff00', '12', '1', '1', '1', 'sound', '0', '0', '0', 'cleanup', '0', '0', 'others', '', '', '', '', '', '', '', '', '1', '1', '1', '1', '1', '1', 'Training', 1, 'JAMES PHILIP GOMERA', 'USER'),
-(13, '2023-09-20', '2023-09-20 00:00:00', 'ANNEX 1', '#000000', '#ffff00', '5', '0', '1', '1', 'sound', '0', '0', '0', 'cleanup', '0', '0', 'others', '', '', '1', '1', '1', '1', '', '', '', '', '', '', '', '', 'Open', 1, 'JAMES PHILIP GOMERA', 'USER');
+(31, '2023-09-23', '2023-09-23 00:00:00', 'BOARD', '#000000', '#ffff00', '2', '1', '1', '1', 'sound', '0', '0', '0', 'cleanup', '0', '0', '', 'dfwesfrewfe', '', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'on', 1, 'JAMES PHILIP GOMERA', 'ADMIN'),
+(32, '2023-09-27', '2023-09-27 00:00:00', 'BOARD', '#000000', '#ffff00', '6', '1', '1', '0', 'sound', '0', '0', '0', 'cleanup', '0', '0', '', 'Babae', '', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'Bored Room', 1, 'JAMES PHILIP GOMERA', 'ADMIN');
 
 -- --------------------------------------------------------
 
@@ -190,12 +187,13 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `id_number`, `username`, `password`, `firstname`, `middlename`, `lastname`, `contactNumber`, `division`, `category`, `status`, `timestamp`) VALUES
-(1, 123456789, 'jpgomera19', '$2y$10$lCzqmn/j8avfUXyR1oBg3..al4U7a/SWB/8JFu.JT8XG3Jlcknyky', 'JAMES PHILIP', 'AMANTE', 'GOMERA', '09101465183', 'STRAT', 'USER', 1, '2023-09-19 00:41:47'),
-(2, 987654321, 'deo123', '$2y$10$NN8BCdSQxem40Lk6ymY0l.j2sc0sNiQqoi5gQl5J3cBvnx..E6sJG', 'Deo', 'Middle', 'Villavicencio', '09123456789', 'STRAT', 'ADMIN', 0, '2023-09-19 00:42:43'),
-(3, 11223344, 'johndoe123', '$2y$10$QMwcGyEsYwCPkpAKjdw8oedZnpSb24/FA9NiVsc.hPhSUQ4guOTSu', 'John', 'Middle', 'Doe', '09123456789', 'HR', 'USER', 0, '2023-09-19 01:54:20'),
+(1, 123456789, 'jpgomera19', '$2y$10$lCzqmn/j8avfUXyR1oBg3..al4U7a/SWB/8JFu.JT8XG3Jlcknyky', 'JAMES PHILIP', 'AMANTE', 'GOMERA', '09101465183', 'STRAT', 'ADMIN', 1, '2023-09-19 00:41:47'),
+(2, 987654321, 'deo123', '$2y$10$NN8BCdSQxem40Lk6ymY0l.j2sc0sNiQqoi5gQl5J3cBvnx..E6sJG', 'Deo', 'Middle', 'Villavicencio', '09123456789', 'STRAT', 'SUPER ADMIN', 1, '2023-09-19 00:42:43'),
+(3, 11223344, 'johndoe123', '$2y$10$QMwcGyEsYwCPkpAKjdw8oedZnpSb24/FA9NiVsc.hPhSUQ4guOTSu', 'John', 'Middle', 'Doe', '09123456789', 'HR', 'USER', 1, '2023-09-19 01:54:20'),
 (4, 1232132123, 'mary123', '$2y$10$8AOn7WgBH5W.tN5npnCb8.Tha/2giwZdjXMHXvcdt52pwM8GHtYhy', 'Mary', 'Middle', 'Smith', '09123456789', 'FINANCE', 'USER', 1, '2023-09-19 02:05:28'),
 (9, 123456767, 'try123', '$2y$10$gT7oUP2Tvuk3PfCEH8pCqeaR6mFE/9HHNESm.hb1Wr.xNe.b/8iSe', 'Try', 'Try', 'Try', '09123456789', 'PPI', 'USER', 2, '2023-09-21 01:09:40'),
-(10, 12345667, 'test123', '$2y$10$AvjhnT8Lsy8gEyBScPYKUeo1zrBWr5464hZw0rz/5zHSBYd7/SRpa', 'Test', 'Test', 'Test', '09123456789', 'PPI', 'USER', 0, '2023-09-21 01:12:34');
+(10, 12345667, 'test123', '$2y$10$AvjhnT8Lsy8gEyBScPYKUeo1zrBWr5464hZw0rz/5zHSBYd7/SRpa', 'Test', 'Test', 'Test', '09123456789', 'PPI', 'USER', 0, '2023-09-21 01:12:34'),
+(11, 1231312312, 'employer@gmail.com', '$2y$10$Axn3G3hNcuJfKDrJ4FemneHrCC/5SZ.F6ruov0uMtXtmsVG4hppxS', 'JAMES PHILIP', 'AMANTE', 'GOMERA', '12313123123', 'BD1-BU3_SPECIAL_ACTIVATION', 'USER', 0, '2023-09-23 06:08:40');
 
 --
 -- Indexes for dumped tables
@@ -243,7 +241,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `evt_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `evt_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `locationpo`
@@ -267,7 +265,7 @@ ALTER TABLE `test`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables

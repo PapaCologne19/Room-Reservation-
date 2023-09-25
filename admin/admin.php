@@ -10,6 +10,7 @@ if (isset($_SESSION["username"], $_SESSION["password"])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="refresh" content="1800; url=logout.php">
         <link rel="shortcut icon" href="../room/images/pcn.png" type="image/x-icon">
         <link rel="stylesheet" href="../bootstrap/bootstrap/css/bootstrap.css">
         <link rel="stylesheet" href="../bootstrap/bootstrap/css/bootstrap.min.css">
@@ -36,26 +37,21 @@ if (isset($_SESSION["username"], $_SESSION["password"])) {
 
 
         <title>Admin Panel</title>
-
-
-        <style>
-            * {
-                font-family: 'Inter', sans-serif;
-            }
-        </style>
     </head>
 
     <body>
         <?php
         if (isset($_SESSION['success'])) { ?>
             <script>
-                swal({
+                Swal.fire({
                     icon: 'success',
                     title: "<?php echo $_SESSION['success']; ?>",
                 })
             </script>
-            <?php unset($_SESSION['success']);
-        } ?>
+        <?php unset($_SESSION['success']);
+        }
+        ?>
+
         <center>
             <div class="container">
                 <div class="row pt-3" style="float: right !important;">
@@ -108,7 +104,8 @@ if (isset($_SESSION["username"], $_SESSION["password"])) {
                                 <tbody>
                                     <?php
                                     $query = "SELECT *, DATE_FORMAT(timestamp, '%M %d, %Y') as date_format 
-                FROM user WHERE category = 'USER'";
+                                            FROM user WHERE category = 'USER' 
+                                            ORDER BY status ASC";
                                     $result = $connect->query($query);
                                     while ($row = $result->fetch_assoc()) {
                                     ?>
@@ -143,6 +140,8 @@ if (isset($_SESSION["username"], $_SESSION["password"])) {
 
 
                                                 <td><?php echo $row['date_format'] ?></td>
+                                                
+                                                <?php if($row["status"] === "0"){?>
                                                 <td>
                                                     <input type="hidden" name="approveID" id="approveID" class="approveID" value="<?php echo $row['id']; ?>">
                                                     <button type="button" class="btn btn-success btn-sm approveButton" name="approveButton" id="approveButton">Approve</button>
@@ -151,6 +150,15 @@ if (isset($_SESSION["username"], $_SESSION["password"])) {
                                                     <input type="hidden" name="rejectID" id="rejectID" class="rejectID" value="<?php echo $row['id'] ?>">
                                                     <button type="button" class="btn btn-danger btn-sm rejectButton" name="rejectButton" id="rejectButton">Reject</button>
                                                 </td>
+                                                <?php } elseif($row["status"] === "1" || $row["status"] === "2"){ ?>
+                                                <td>
+                                                    <button type="button" class="btn btn-success btn-sm approveButton" name="approveButton" id="approveButton" disabled>Approve</button>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger btn-sm rejectButton" name="rejectButton" id="rejectButton" disabled>Reject</button>
+                                                </td>
+                                                <?php }?>
+
                                         </tr>
                                     <?php } ?>
                                 </tbody>
@@ -198,6 +206,7 @@ if (isset($_SESSION["username"], $_SESSION["password"])) {
                                             </td>
                                             <td style="text-align: center;"><?php echo $row['active']; ?></td>
                                             <td class="text-center"><?php echo $row['timestamp']; ?></td>
+                                            
                                             <td class="text-center">
                                                 <input type="hidden" class="updateID" name="updateID" id="updateID" value="<?php echo $row['id'] ?>">
                                                 <button type="button" class="btn btn-sm updateButton button" name="updateButton" id="updateButton">Update</button>
@@ -215,7 +224,7 @@ if (isset($_SESSION["username"], $_SESSION["password"])) {
                                             <div class="modal-dialog modal-xl">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <img src="../images/pcn.png" id="imgko1" alt="logo" class="logo" style="width:100px;height:auto;padding-top:20px" onclick="playAudio();$('#myModal1').modal('show');" data-dismiss="modal">
+                                                        <img src="../room/images/pcn.png" id="imgko1" alt="logo" class="logo" style="width:100px;height:auto;padding-top:20px" onclick="playAudio();$('#myModal1').modal('show');" data-dismiss="modal">
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
@@ -249,7 +258,7 @@ if (isset($_SESSION["username"], $_SESSION["password"])) {
 
             </div>
         </center>
-
+<br><br><br><br><br>
         <!-- Modal For Adding Rooms -->
         <div class="modal fade" id="addRooms" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -501,6 +510,11 @@ if (isset($_SESSION["username"], $_SESSION["password"])) {
                 });
             });
         </script>
+        <footer>
+            <center>
+                <p class="blockquote-footer" style="font-family: 'Roboto', sans-serif !important;">Copyright &copy; 2023 PCNPromopro Inc. All rights reserved.</p>
+            </center>
+        </footer>
     </body>
 
     </html>
